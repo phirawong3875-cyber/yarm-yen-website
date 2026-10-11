@@ -1,0 +1,285 @@
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101810">
+  <title>Yarm Yen | Minecraft Survival</title>
+  <style>
+    :root {
+      --bg: #101810;
+      --panel: #1b281c;
+      --green: #83e36b;
+      --text: #f2f5ef;
+      --muted: #b5c3b1;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background:
+        radial-gradient(ellipse at top, #28482b, transparent 65%),
+        var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    header, main, footer {
+      width: min(900px, 92%);
+      margin: auto;
+    }
+
+    header {
+      padding: 24px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .brand {
+      font-weight: 900;
+      font-size: 21px;
+      color: var(--green);
+    }
+
+    .tag {
+      border: 1px solid #426a3d;
+      padding: 7px 11px;
+      border-radius: 99px;
+      font-size: 12px;
+      color: var(--green);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 65px 10px 45px;
+    }
+
+    .grass {
+      font-size: 58px;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-size: clamp(38px, 9vw, 70px);
+      line-height: 1.05;
+      margin: 0;
+      letter-spacing: -2px;
+    }
+
+    h1 span { color: var(--green); }
+
+    .subtitle {
+      color: var(--muted);
+      line-height: 1.8;
+      margin: 20px auto 28px;
+      max-width: 520px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    a, button {
+      font: inherit;
+      font-weight: 750;
+      border-radius: 12px;
+      padding: 13px 18px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .primary {
+      background: var(--green);
+      color: #142012;
+      border: 1px solid var(--green);
+    }
+
+    .secondary {
+      color: var(--text);
+      background: #1b281c;
+      border: 1px solid #405640;
+    }
+
+    .panel {
+      background: #1b281c;
+      border: 1px solid #354a35;
+      border-radius: 18px;
+      padding: 22px;
+      margin: 18px 0;
+    }
+
+    h2 { margin-top: 0; }
+
+    .ip {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      background: #101810;
+      padding: 13px;
+      border-radius: 12px;
+      overflow-wrap: anywhere;
+    }
+
+    #serverIp {
+      color: var(--green);
+      font-weight: 700;
+      overflow-wrap: anywhere;
+    }
+
+    .copy {
+      background: #294329;
+      color: white;
+      border: 1px solid #426a3d;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .stat {
+      background: #101810;
+      padding: 17px 12px;
+      border-radius: 12px;
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--green);
+      margin-bottom: 6px;
+    }
+
+    .stat small { color: var(--muted); }
+
+    .note {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 30px 0;
+      font-size: 13px;
+    }
+
+    @media (max-width: 520px) {
+      .grid { grid-template-columns: 1fr; }
+      .hero { padding-top: 42px; }
+      .ip { align-items: stretch; }
+      .copy { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">⛏ YARM YEN</div>
+    <div class="tag">MINECRAFT SERVER</div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="grass">🌿</div>
+      <h1>Yarm <span>Yen</span></h1>
+      <p class="subtitle">
+        โลกแห่งการเอาชีวิตรอดที่เราอยากสร้างไปด้วยกัน
+        มาสร้างบ้าน สำรวจโลก และผจญภัยกับเพื่อน ๆ กัน!
+      </p>
+      <div class="buttons">
+        <a class="primary" href="#join">เข้าร่วมเซิร์ฟเวอร์ ↓</a>
+        <a class="secondary"
+           href="https://modrinth.com/server/yarm-yen"
+           target="_blank" rel="noopener">
+          ดูบน Modrinth ↗
+        </a>
+      </div>
+    </section>
+
+    <section class="panel" id="join">
+      <h2>🎮 เข้าร่วมการผจญภัย</h2>
+      <p class="note">
+        คัดลอก IP ด้านล่าง แล้วนำไปเพิ่มใน Minecraft
+      </p>
+      <div class="ip">
+        <span id="serverIp">YOUR_SERVER_IP</span>
+        <button class="copy" id="copyButton"
+                onclick="copyIP()">คัดลอก IP</button>
+      </div>
+      <p class="note" id="copyMessage">
+        อย่าลืมเปลี่ยน YOUR_SERVER_IP เป็น IP จริงของเซิร์ฟเวอร์
+      </p>
+    </section>
+
+    <section class="panel">
+      <h2>🌍 ข้อมูลเซิร์ฟเวอร์</h2>
+      <div class="grid">
+        <div class="stat">
+          <strong>Survival</strong>
+          <small>รูปแบบการเล่น</small>
+        </div>
+        <div class="stat">
+          <strong id="gameVersion">1.20.1</strong>
+          <small>เวอร์ชันที่ระบุไว้</small>
+        </div>
+        <div class="stat">
+          <strong>Community</strong>
+          <small>เล่นด้วยกันอย่างเป็นมิตร</small>
+        </div>
+      </div>
+      <p class="note">
+        โปรดตรวจสอบเวอร์ชันเกมที่รองรับกับผู้ดูแลเซิร์ฟเวอร์
+        ก่อนเข้าเล่น
+      </p>
+    </section>
+
+    <section class="panel">
+      <h2>💚 มาเป็นส่วนหนึ่งของ Yarm Yen</h2>
+      <p class="note">
+        เตรียมตัวให้พร้อม แล้วมาสร้างความทรงจำ
+        ในโลก Minecraft ไปด้วยกัน!
+      </p>
+      <a class="secondary"
+         href="https://modrinth.com/server/yarm-yen"
+         target="_blank" rel="noopener">
+        รายละเอียดเพิ่มเติม ↗
+      </a>
+    </section>
+  </main>
+
+  <footer>
+    Yarm Yen Community · Minecraft Fan Website
+    <br>Not affiliated with Mojang or Microsoft.
+  </footer>
+
+  <script>
+    async function copyIP() {
+      const ip = document.getElementById("serverIp").textContent.trim();
+      const message = document.getElementById("copyMessage");
+
+      if (ip === "YOUR_SERVER_IP") {
+        message.textContent = "กรุณาใส่ IP จริงของเซิร์ฟเวอร์ก่อน";
+        return;
+      }
+
+      try {
+        await navigator.clipboard.writeText(ip);
+        message.textContent = "คัดลอก IP แล้ว! นำไปวางใน Minecraft ได้เลย";
+      } catch (error) {
+        message.textContent = "ไม่สามารถคัดลอกอัตโนมัติได้ กรุณาคัดลอก IP ด้วยตัวเอง";
+      }
+    }
+  </script>
+</body>
+</html>
